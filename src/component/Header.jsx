@@ -13,8 +13,8 @@ const Header = () => {
         {/* Thanh điều hướng */}
         <nav className="hidden md:flex space-x-6">
           <Link to="/" className="text-gray-700 hover:text-blue-500">Home</Link>
-          <Link to="/products" className="text-gray-700 hover:text-blue-500">Sản phẩm</Link>
-          <Link to="/contact" className="text-gray-700 hover:text-blue-500">Liên hệ</Link>
+          <Link to="/product" className="text-gray-700 hover:text-blue-500">Sản phẩm</Link>
+          <Link to="/valentinel-landing-page" className="text-gray-700 hover:text-blue-500">Landing Page</Link>
         </nav>
 
         {/* Nút Giỏ hàng */}

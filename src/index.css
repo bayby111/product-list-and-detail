@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.falling-flowers .flower {
+    position: fixed;
+    top: -50px;
+    width: 30px;
+    height: 30px;
+    background: url('');
+    opacity: 0.8;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
