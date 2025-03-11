@@ -1,34 +1,55 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 const FallingFlower = () => {
+  const createFallingFlower = () => {
+    const flower = document.createElement("div");
+    flower.className = "flower";
+    const flowerSize = Math.random() + 0.1; // Kích thước ngẫu nhiên
+    const flowerPos = Math.random() * 90 + 4; // Vị trí ngang theo phần trăm
+    const fallingTime = Math.floor(Math.random() * 10) + 5; // Thời gian rơi từ 5 đến 15 giây
 
-    
-    useEffect(() => {
-       
-       const createFlower =()=> {
-            const flower = document.createElement('div');
-            flower.classList.add('flower');
-            flower.style.left = Math.random() * window.innerWidth + 'px';
-            flower.style.animationDuration = Math.random() * 3 + 2 + 's';
-            flower.innerHTML = `<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRn6H9vcmzAO18JfteTIQC2NYCfZ3kP6Dr_IdQsJuc0N03sVpEzHfZA5KECFLYtgqjdZu_6XAXPmK5Fgn_xiO4ruyAB0p1L1KVlRLuxMX4">`;
-            document.getElementById('container').appendChild(flower);
-            setTimeout(() => {
-                flower.remove();
-            }, 5000);
-        }
-        const interval = setInterval(createFlower, 1500); // Cứ 1s thêm 5 hoa mới
-        return () => clearInterval(interval); // Cleanup khi component bị hủy
+    flower.style.width = "40px";
+    flower.style.height = "40px";
+    flower.style.left = `${flowerPos}%`;
+    flower.style.transform = `scale(${flowerSize})`;
+    // Sử dụng animation với tên "falling-flower" đã được định nghĩa trong CSS
+    flower.style.animation = `falling-flower ${fallingTime}s linear infinite`;
 
-    }, []);
+    // Tạo một phần tử span để chứa emoji hoa
+    const emojiElement = document.createElement("span");
+    emojiElement.innerText = "🌸";
+    emojiElement.className = "envelope";
+    emojiElement.style.width = "100%";
+    emojiElement.style.height = "100%";
 
-    return (
-     <div>
-        {/* Falling Flowers Effect */}
-        <div className="flower-container" id="container"></div>
-     </div>
-    );
+    // Thêm emoji vào phần tử hoa
+    flower.appendChild(emojiElement);
+    // Thêm hoa vào container có class "falling-flowers"
+    document.querySelector(".falling-flowers")?.appendChild(flower);
+  };
 
-}
+  const removeFlower = () => {
+    // Lấy tất cả các phần tử có class "flower" và xóa khi chúng gần chạm đáy màn hình
+    document.querySelectorAll(".flower").forEach((flower) => {
+      if (
+        flower instanceof HTMLElement &&
+        flower.offsetTop > document.documentElement.clientHeight - 100
+      ) {
+        flower.remove();
+      }
+    });
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      createFallingFlower();
+      removeFlower();
+    }, 500);
+    // Cleanup interval khi component unmount
+    return () => clearInterval(interval);
+  }, []);
+
+  return <div className="falling-flowers"></div>;
+};
 
 export default FallingFlower;

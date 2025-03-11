@@ -1,0 +1,171 @@
+/*  
+BEE MY VALENTINE WORKSHOP STEPS
+1. Animate your bee's wings flapping
+2. Animate the heart beating
+3. Add a motion path and animate the bee across the motion path
+
+4. STRETCH GOAL: are there animations you can appy to the flowers? How would you write and add an animation to the flowers?
+5. STRETCH GOAL: try customizing the text inside of the heart
+*/
+#bee {
+  width: 150px;
+  margin: 10vw;
+
+  /*  WRITE A MOTION PATH FOR YOUR BEE!  */
+
+  /*straight offset path*/
+  /*   offset-path: path('M50,50 L500,50'); */
+
+  /*zig-zap offset path*/
+  /*   offset-path: path('M5 5 L55 55 L105 5 L155 55 L205 5 L255 55 L305 5 L355 55 L405 5 L455 55 L505 5'); */
+
+  /*scalloped offset path */
+  /*     offset-path: path('M50,50 C50,0 100,0 100,50 C100,100 150,100 150,50 C150,0 200,0 200,50 C200,100 250,100 250,50 C250,0 300,0 300,50 C300,100 350,100, 350,50 C350,0 400,0 400,50 C400,100 450,100, 450,50 C450,0 500,0, 500,50 C500,100 550,100 550,50'); */
+
+  /* custom offset path   */
+  offset-path: path(
+    "M10,10 C50,0 50,0 100,50 C150,100 150,100 200,50 C250,0 250,0 300,50 C350,100 350,100 400,50 C450,0, 450,0 500,50"
+  );
+
+  /*  ANIMATE YOUR BEE  */
+  animation: beeFly 30000ms infinite ease-in-out;
+}
+#frontWing {
+  transform-origin: 30% 50%;
+
+  /*  ANIMATE THE FRONT WING FLAPPING  */
+  animation: frontWingFlap 1s infinite alternate linear;
+}
+#backWing {
+  transform-origin: 30% 50%;
+
+  /*  ANIMATE THE BACK WING FLAPPING  */
+  animation: backWingFlap 1s infinite alternate linear;
+}
+#heart {
+  transform-origin: 50% 50%;
+  animation: heartbeat 0.5s infinite alternate ease-in-out;
+}
+
+/***  ANIMATIONS  ***/
+@keyframes beeFly {
+  /* start your bee at the start of your motion path */
+  0% {
+    offset-distance: 0%;
+    transform: scaleX(1);
+  }
+  /*  animate your bee to the end of your motion path  */
+  50% {
+    offset-distance: 100%;
+    transform: scaleX(1);
+  }
+  /*  flip your bee to face towards the start of the path  */
+  51% {
+    transform: scaleX(-1);
+  }
+  /* animate your bee back to the start of your motion path */
+  99% {
+    offset-distance: 0%;
+    transform: scaleX(-1);
+  }
+  /*  flip your bee to face forwards  */
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes frontWingFlap {
+  /*  flap front wing in one direction  */
+  to {
+    transform: rotate(-10deg);
+  }
+}
+@keyframes backWingFlap {
+  /*  flap back wing in opposite direction of front wing  */
+  to {
+    transform: rotate(10deg);
+  }
+}
+@keyframes heartbeat {
+  /*  have heart grow, and then shrink  */
+  to {
+    transform: scale(1.1); 
+  }
+}
+
+/* STRETCH GOAL - edit the text and text appearance */
+.heartTxt {
+  font-size: 71.78px;
+  fill: #c9567e;
+  font-family: Comfortaa-Regular, Comfortaa;
+}
+
+/* ------------------------- */
+body {
+  background-color: #a1cdce;
+}
+.greenFill {
+  fill: #afddb3;
+  stroke: #8dc690;
+  stroke-width: 3px;
+}
+.pinkFill {
+  fill: #f5bfd2;
+  stroke: #c9567e;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+.yellowFill {
+  fill: #ffc659;
+  stroke: #d1a045;
+  stroke-width: 4px;
+}
+.whiteFill {
+  fill: white;
+}
+
+.fillGrey {
+  fill: #999;
+}
+.outlineBlack {
+  stroke: #000;
+  stroke-miterlimit: 10;
+}
+.outlineWhite {
+  fill: none;
+  stroke: #fff;
+}
+.wings {
+  fill: #b7e6f9;
+  stroke: #80b1c4;
+  stroke-miterlimit: 10;
+  stroke-width: 4px;
+}
+.body {
+  fill: #ffc659;
+  stroke-width: 5px;
+  stroke-miterlimit: 10;
+  stroke: #d1a045;
+}
+.legs,
+.antennae {
+  stroke: #000;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.legs {
+  stroke-width: 8px;
+}
+.antennae {
+  stroke-width: 4px;
+}
+#heartGroup {
+  height: 80vh;
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  z-index: -1;
+}

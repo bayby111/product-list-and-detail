@@ -1,0 +1,237 @@
+
+  .heart-container{
+    position : relative;
+  }
+
+  /* beating heart on right */
+  .heart-on-right{
+    position: absolute;
+    top: 1000px;
+    right: 10px; 
+    width: 20vw;
+    height: 20vw;
+    max-width: 200px;
+    max-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: shake;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    opacity: 0.5;
+  }
+  .heart-on-right .base {
+    width: 50%;
+    height: 50%;
+    background: red;
+    transform: rotate(45deg);
+    position: relative;
+    top: 5%;
+  }
+  .heart-on-right .base.primary {
+    animation-name: beating-heart;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    z-index: 1;
+  }
+  .heart-on-right .base.secondary {
+    position: absolute;
+    top: 30%;
+    animation-name: ripple-one;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .heart-on-right .base.tertiary {
+    position: absolute;
+    top: 30%;
+    animation-name: ripple-two;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .heart-on-right .base .part {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+  }
+  .heart-on-right .base .part.left {
+    top: 0;
+    left: -50%;
+  }
+  .heart-on-right .base .part.right {
+    top: -50%;
+    left: 0;
+  }
+
+   /* beating heart on left */
+
+   .heart-on-left{
+    position: absolute;
+    top: 1000px;
+    left: 10px; 
+    width: 20vw;
+    height: 20vw;
+    max-width: 200px;
+    max-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: shake;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    opacity: 0.5;
+  }
+  .heart-on-left .base {
+    width: 50%;
+    height: 50%;
+    background: red;
+    transform: rotate(45deg);
+    position: relative;
+    top: 5%;
+  }
+  .heart-on-left .base.primary {
+    animation-name: beating-heart;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    z-index: 1;
+  }
+  .heart-on-left .base.secondary {
+    position: absolute;
+    top: 30%;
+    animation-name: ripple-one;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .heart-on-left .base.tertiary {
+    position: absolute;
+    top: 30%;
+    animation-name: ripple-two;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .heart-on-left .base .part {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+  }
+  .heart-on-left .base .part.left {
+    top: 0;
+    left: -50%;
+  }
+  .heart-on-left .base .part.right {
+    top: -50%;
+    left: 0;
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: rotate(0deg);
+    }
+    55% {
+      transform: rotate(0deg);
+    }
+    57% {
+      transform: rotate(5deg);
+    }
+    59% {
+      transform: rotate(0deg);
+    }
+    61% {
+      transform: rotate(0deg);
+    }
+    63% {
+      transform: rotate(-5deg);
+    }
+    65% {
+      transform: rotate(0deg);
+    }
+    85% {
+      transform: rotate(0deg);
+    }
+    87% {
+      transform: rotate(5deg);
+    }
+    89% {
+      transform: rotate(0deg);
+    }
+    91% {
+      transform: rotate(0deg);
+    }
+    93% {
+      transform: rotate(-5deg);
+    }
+    95% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes beating-heart {
+    0% {
+      transform: rotate(45deg) scale(1, 1);
+    }
+    40% {
+      transform: rotate(45deg) scale(1, 1);
+    }
+    50% {
+      transform: rotate(45deg) scale(2, 2);
+    }
+    60% {
+      transform: rotate(45deg) scale(1, 1);
+    }
+    70% {
+      transform: rotate(45deg) scale(1, 1);
+    }
+    80% {
+      transform: rotate(45deg) scale(2, 2);
+    }
+    100% {
+      transform: rotate(45deg) scale(1, 1);
+    }
+  }
+  @keyframes ripple-one {
+    0% {
+      transform: rotate(45deg) scale(1, 1);
+      opacity: 1;
+    }
+    40% {
+      transform: rotate(45deg) scale(1, 1);
+      opacity: 1;
+    }
+    70% {
+      transform: rotate(45deg) scale(4, 4);
+      opacity: 0;
+    }
+    71% {
+      transform: rotate(45deg) scale(1, 1);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(45deg) scale(1, 1);
+      opacity: 0;
+    }
+  }
+  @keyframes ripple-two {
+    0% {
+      transform: rotate(45deg) scale(1, 1);
+      opacity: 1;
+    }
+    70% {
+      transform: rotate(45deg) scale(1, 1);
+      opacity: 1;
+    }
+    99% {
+      transform: rotate(45deg) scale(4, 4);
+      opacity: 0;
+    }
+    100% {
+      transform: rotate(45deg) scale(1, 1);
+      opacity: 0;
+    }
+  }
+
+ 
